@@ -8,25 +8,24 @@ public class Sounds : MonoBehaviour
     [SerializeField] private Slider volumeSlider;   // Ваш Slider
     [SerializeField] private Toggle muteToggle;     // Ваш новый Toggle (флажок)
 
+    [SerializeField, Range(0f, 1f)]
+    private float defaultVolume = 0.7f;
+
     private void Start()
     {
-        // Подписываем слайдер на изменения
         if (volumeSlider != null)
         {
+            volumeSlider.value = defaultVolume;
             volumeSlider.onValueChanged.AddListener(ChangeVolume);
         }
 
-        // Подписываем флажок на изменения
         if (muteToggle != null)
         {
             muteToggle.onValueChanged.AddListener(ToggleSound);
-
-            // Сразу выставляем звук в зависимости от состояния флажка при старте
             ToggleSound(muteToggle.isOn);
         }
         else if (volumeSlider != null)
         {
-            // Если флажка нет, просто ставим звук по слайдеру
             ChangeVolume(volumeSlider.value);
         }
     }
