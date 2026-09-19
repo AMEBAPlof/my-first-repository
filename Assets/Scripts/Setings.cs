@@ -8,6 +8,8 @@ public class Setings : MonoBehaviour
     public AudioSource audio;
     public float volume;
 
+    
+
     private void Start()
     {
         toggleMusic = GameObject.FindGameObjectWithTag("Toggle").GetComponent<Toggle>();
@@ -59,5 +61,7 @@ public class Setings : MonoBehaviour
     {
         volume = PlayerPrefs.GetFloat("Volume", volume);
     }
+
+    
 
 }
